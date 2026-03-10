@@ -1,0 +1,4 @@
+streamlit
+streamlit-ace
+watchdog
+streamlit-option-menu
