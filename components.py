@@ -14,50 +14,55 @@ def mermaid(code, title="diagram", height=750):
       <style>
         :root {{
           --bg: #ffffff;
-          --toolbar-bg: rgba(250,250,250,0.9);
+          --toolbar-bg: #ffffff;
           --btn-bg: #f3f4f6;
-          --btn-hover: #e6e7ea;
+          --btn-hover: #e5e7eb;
         }}
 
         html,body {{
           margin:0;
           padding:0;
           background:var(--bg);
-          font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+          font-family: Inter, system-ui, -apple-system, sans-serif;
         }}
 
         .preview-wrapper {{
           position: relative;
           width: 100%;
-          min-height: 60vh;
+          min-height: 95vh;
           box-sizing: border-box;
           padding: 24px;
           display:flex;
           justify-content:center;
           align-items:flex-start;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          background: #fafafa;
         }}
 
         /* Toolbar in top-right of preview container (relative to wrapper) */
         .toolbar {{
           position: absolute;
-          right: 18px;
-          top: 12px;
+          right: 16px;
+          top: 16px;
           display:flex;
           gap:8px;
           z-index: 20;
           background: var(--toolbar-bg);
-          padding:6px;
-          border-radius:8px;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+          padding: 6px;
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }}
 
         .toolbar button {{
           border: none;
           background: var(--btn-bg);
-          padding:8px 10px;
-          border-radius:8px;
-          cursor:pointer;
-          font-size:14px;
+          padding: 8px 12px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background 0.2s;
         }}
 
         .toolbar button:hover {{ background: var(--btn-hover); }}
@@ -65,7 +70,7 @@ def mermaid(code, title="diagram", height=750):
         /* Constrain mermaid container and ensure svg responsive */
         #diagram-container {{
           width: 100%;
-          max-width: 880px; /* limits huge diagrams */
+          max-width: 100%;
           box-sizing: border-box;
         }}
 
