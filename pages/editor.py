@@ -90,7 +90,7 @@ with editor_col:
     code = st_ace(
         value=diagram.get("code", ""),
         language="markdown",
-        theme="tomorrow_night", 
+        theme="chrome", 
         height=editor_height,
         auto_update=True,
         key=f"ace_{diagram_id}",
