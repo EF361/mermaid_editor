@@ -1,96 +1,101 @@
-# 🧜 Mermaid Studio
+# Mermaid Editor
 
-**A professional, real-time editor for creating, previewing, and exporting Mermaid.js diagrams.**
+![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-blue?style=flat-square) 
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square) 
+![Mermaid.js](https://img.shields.io/badge/Mermaid.js-Diagrams-green?style=flat-square)
+![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen?style=flat-square)
 
-## 🚀 Overview
+## __Business Value__
 
-Mermaid Studio is a streamlined web application designed to simplify the creation of technical diagrams. By providing a side-by-side interface, users can write Mermaid syntax and see their flowcharts, sequence diagrams, and Gantt charts render instantly in a high-fidelity preview pane.
+Mermaid Editor provides an intuitive and professional solution for creating, previewing, and exporting responsive **Mermaid.js diagrams** in real-time. This tool eliminates the complexities of diagramming workflows, empowering technical architects, project managers, and developers to visually represent systems quickly and efficiently. By integrating professional-grade editing and live previews, this editor saves time and ensures error-free visualization, making your work hassle-free.
 
-The project addresses the need for a persistent, local-first diagramming tool. Built with Streamlit, it manages a local library of diagrams, allowing users to save their progress automatically and return to their work at any time without losing data.
+Whether you're drafting a flowchart, Gantt chart, or sequence diagram, Mermaid Editor streamlines the process for **better collaboration, faster iterations, and more polished deliverables.**
 
-## ✨ Key Features
+---
 
-- ⚡ **Real-time Rendering**: Instant visual feedback as you type your Mermaid code using a high-performance integrated editor.
-- 💾 **Auto-Save Storage**: A built-in JSON-based storage system that automatically preserves your titles and code changes.
-- 🖼️ **Industrial Export**: Export your diagrams directly to high-resolution PNG files or copy them to your clipboard for use in reports and presentations.
-- 🗂️ **Project Management**: A centralized dashboard to create, list, and manage multiple diagram projects seamlessly.
-- 🎨 **Monokai Theme**: A polished, developer-friendly code editing experience powered by Streamlit Ace.
+## __Tech Stack__
 
-## 🛠️ Tech Stack
+This project leverages cutting-edge technologies to bring a seamless user experience:
 
-- **Frontend/Backend**: Streamlit
-- **Editor**: Streamlit Ace (Monokai Theme)
-- **Rendering Engine**: Mermaid.js (v10 via CDN)
-- **Data Persistence**: JSON File System
-- **Language**: Python 3.x
+- **[Streamlit](https://streamlit.io):** Forms the backbone of the application by enabling a responsive, interactive web-based UI for real-time diagram rendering.
+- **[Streamlit Ace](https://github.com/okld/streamlit-ace):** Powering the editor's code-pane for syntax-highlighted editing.
+- **[Mermaid.js](https://mermaid-js.github.io):** Used for rendering versatile and dynamic diagrams from text-based definitions.
+- **Python 3.x:** The primary language for developing the app's backend and integrating components.
 
-## 📦 Installation
+---
 
-Follow these steps to set up Mermaid Studio on your local machine:
+## __How It Works__
 
-**1. Clone the repository:**
-```bash
-git clone https://github.com/EF361/mermaid_editor.git
-cd mermaid_editor
+### Overview of the Workflow:
 
-```
+1. **Write:** Use the interactive Mermaid.js editor (powered by Streamlit Ace) to define your diagram with structured Markdown-like syntax.
+2. **Preview:** Instantly visualize your diagram in real-time as you write. The live preview ensures immediate feedback and validation.
+3. **Export:** Seamlessly export diagrams in a professional format such as PNG or SVG to integrate with your projects, presentations, or documentation.
 
-**2. Create and activate a virtual environment:**
+The elegantly designed platform simplifies diagramming, ensuring maximum productivity with minimal configuration.
 
-*Windows:*
+---
 
-```bash
-python -m venv venv
-.\venv\Scripts\activate
+## __Installation__
 
-```
+To get started with Mermaid Editor locally:
 
-*Mac/Linux:*
+1. Clone this repository:
+   ```
+   git clone https://github.com/<your-org>/mermaid_editor.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd mermaid_editor
+   ```
+3. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+4. Run the application locally:
+   ```
+   streamlit run app.py
+   ```
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
+Access the editor in your browser at `http://localhost:8501`.
 
-```
+---
 
-**3. Install dependencies:**
+## __Screenshots__
 
-```bash
-pip install -r requirements.txt
+- **Code Editor and Preview:**  
+  Combine writing, rendering, and validation in a single interface for a frictionless workflow.
 
-```
+---
 
-## 🏃‍♂️ How to Run
+## __Contribution Guidelines__
 
-To launch the application, execute the following command in your terminal:
+We value community contributions and welcome enhancements, bug fixes, and feature ideas!
 
-```bash
-streamlit run app.py
+To contribute:
 
-```
+1. Fork the repository.
+2. Create a new branch:
+   ```
+   git checkout -b feature/your-feature-name
+   ```
+3. Make your changes following PEP 8 guidelines and write clear commit messages.
+4. Test thoroughly before submitting a pull request.
+5. Submit a pull request (PR) with details about what you’ve improved.
 
-Once running, you can access the application at:
-`http://localhost:8501`
+### Code of Conduct
+Be respectful and professional when engaging with the community. By contributing, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## 📖 Usage Guide
+---
 
-1. **Create a Diagram**: Click the **"➕ New"** button on the home dashboard to generate a new workspace.
-2. **Edit Code**: Use the **Code** editor on the left to input your Mermaid syntax (e.g., `flowchart TD`).
-3. **Preview & Refine**: Monitor the **Preview** pane on the right to see your changes update in real-time.
-4. **Export Your Work**: Use the toolbar in the top-right of the preview window to download the diagram as a PNG or copy it to your clipboard.
-5. **Manage Library**: Click the **"Back"** button to return to the dashboard and view your saved diagrams.
+## __License__
 
-## 📂 Project Structure
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
 
-```text
-mermaid_editor/
-├── app.py              # Main entry point and dashboard UI
-├── components.py       # Custom Mermaid.js rendering component
-├── storage.py          # Logic for JSON-based file persistence
-├── requirements.txt    # Project dependencies
-├── .gitignore          # Version control exclusion rules
-├── diagrams/           # Local storage directory for saved JSON files
-└── pages/
-    └── editor.py       # Real-time editor and preview interface
+--- 
 
-```
+## __Get in Touch__
+
+For questions, suggestions, or support:
+- Open an [issue](https://github.com/<your-org>/mermaid_editor/issues).
+- Connect with our contributors at team@example.com.
