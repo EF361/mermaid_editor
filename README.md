@@ -1,112 +1,85 @@
-# Mermaid Editor ​🖋️✨ by EF361  
-![License](https://img.shields.io/badge/license-MIT-blue)  
-![Python](https://img.shields.io/badge/python-v3.9%2B-brightgreen)  
-![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-red)  
-![MermaidJS](https://img.shields.io/badge/diagram-Mermaid.js-purple)  
+# Mermaid Editor ![Python](https://img.shields.io/badge/Python-3.x-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-%3E=1.0-orange) ![Mermaid.js](https://img.shields.io/badge/Mermaid.js-10.x-brightgreen) ![License](https://img.shields.io/badge/License-MIT-lightgrey) ![Demo](https://img.shields.io/badge/Demo-Live-blue)
+
+## Executive Summary
+**Mermaid Editor** is an interactive diagram creation tool that empowers users to design, edit, and render powerful Mermaid.js diagrams in real time. Built with Python, Streamlit, and Mermaid.js, it streamlines the visualization process for software engineers, product managers, and cross-functional teams. This tool reduces the effort required for creating diagrams while enhancing collaborative productivity.
 
 ---
 
-## **Business Value** 🌟  
-
-**Simplifying Diagram Creation with Speed & Precision**  
-The **Mermaid Editor** is designed for professionals who need to visualize ideas, workflows, and processes—fast. With a user-friendly interface and seamless real-time previews, users can create, edit, and share professional-quality diagrams in a matter of seconds.  
-
-This tool empowers:  
-- **Software Engineers** to model system architectures.  
-- **Project Managers** to design workflows and timelines.  
-- **Data Analysts** to map out data pipelines.  
-- And **anyone** who needs to turn complex ideas into digestible visuals.  
-
-### **What Makes This Different?**  
-✔️ **Real-Time Previews:** See updates instantly with no delays.  
-✔️ **Collaborative Ready:** Easily share your diagrams with teams or clients via link export.  
-✔️ **Simple Integration:** No coding required—the perfect tool for diagramming novices and technical experts alike.  
+## Key Features
+- **Interactive Diagram Builder**: Create and visualize flowcharts, sequence diagrams, Gantt charts, and more using the intuitive Mermaid.js syntax.
+- **Live Preview**: Real-time updates of diagrams as you write or modify Mermaid.js code, eliminating the need for external rendering tools.
+- **Multiple Export Formats**: Save diagrams as PNG, SVG, and raw Mermaid.js code for seamless application in your projects.
+- **Streamlit-Powered UI**: A clean, responsive interface for designing and previewing diagrams with no prior setup required.
+- **Collaborative Features** (In Progress): Support for comments and planned real-time editing capabilities to foster teamwork and ideation.
+- **Robust Documentation**: Step-by-step user guides explaining use cases, integrations, and supported diagram types.
+- **Extensible Backend**: Modular Python architecture designed to integrate with APIs or custom data pipelines.
 
 ---
 
-## **Tech Stack** 🛠️  
+## Architecture & Workflow
+Mermaid Editor utilizes a lightweight Python and Streamlit backend to interface with Mermaid.js visualization capabilities. Below is a high-level overview of the system architecture and interaction flow:
 
-- **Python (v3.9+):** Drives back-end operations.  
-- **Streamlit:** Provides the robust web-based editor interface.  
-- **Mermaid.js:** Powering precise diagram rendering.  
-
----
-
-## **How It Works** ⚙️  
-
-1. **User Inputs:** Write diagrams in the simple Mermaid.js syntax using the intuitive text editor.  
-2. **Real-Time Rendering:** The editor renders updates immediately, offering seamless previews.  
-3. **Customization:** Modify styles, themes, and diagram structures to suit your unique needs.  
-4. **Collaboration & Sharing:**  
-   - Share via generated links for quick accessibility.  
-   - Download diagrams locally for integration into reports or presentations.  
-5. **Export Options:** Save diagrams as text, image files, or even directly into your project repositories.  
-
-**Bonus Features:**  
-- Integrated sharing enhances team-centric workflows.  
-- Lightweight design ensures snappy performance even on low-resources devices.  
+```mermaid
+graph TD
+    User[User Input] -->|Mermaid.js Syntax| Editor[Streamlit Editor UI]
+    Editor -->|Preview Updates| Renderer[Mermaid.js Renderer]
+    Renderer -->|Real-Time Diagram| Preview[Live Preview UI]
+    Editor -->|Export Options| Export[Export Handler]
+    Export --> PNG[Export as PNG]
+    Export --> SVG[Export as SVG]
+    Export --> Code[Export as Code]
+```
 
 ---
 
-## **Getting Started** 🚀  
-
-### Prerequisites:  
-Ensure you have the following installed:  
-- Python `3.9+`  
-- pip `21.0+`  
-
-### Installation:  
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/EF361/mermaid_editor.git  
-   ```  
-2. Navigate to the project directory:  
-   ```bash  
-   cd mermaid_editor  
-   ```  
-3. Install required dependencies:  
-   ```bash  
-   pip install -r requirements.txt  
-   ```  
-
-4. Run the application:  
-   ```bash  
-   streamlit run app.py  
-   ```  
-
-5. Open the provided localhost address in your browser to begin diagramming.  
+## Tech Stack & Tools
+- **Python**: Backend logic, file handling, and seamless integration with Streamlit.
+- **Streamlit**: Lightweight and user-friendly frontend library for building web applications.
+- **Mermaid.js**: Diagrams-as-code framework for rendering flowcharts, sequence diagrams, and more.
+- **Docker** (Optional): For containerization and deployment in enterprise environments.
 
 ---
 
-## **Collaboration & Sharing** 🧑‍🤝‍🧑  
+## Quickstart / Installation
+Follow the steps below to set up and run the Mermaid Editor locally:
 
-- **Generate Shareable Links:** Share live preview links with collaborators using our link-sharing feature.  
-- **Team Collaboration Support:** Multiple users can now provide feedback or comments through integrated annotations.  
-- **Export Formats:** Export visually stunning diagrams to PNG, SVG, or PDF for presentation use.  
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/EF361/mermaid_editor.git
+   cd mermaid_editor
+   ```
 
-Collaborate effortlessly—bring clarity to your workflow and boost team productivity.  
+2. **Create a Virtual Environment**:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate   # On Windows, use `venv\Scripts\activate`
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the Application**:
+   ```bash
+   streamlit run app.py
+   ```
+
+5. **Access the Editor**:
+   Navigate to `http://localhost:8501` in your browser.
+
+6. **Optional - Docker Deployment**:
+   Build and run the application in a Docker container:
+   ```bash
+   docker build -t mermaid-editor .
+   docker run -p 8501:8501 mermaid-editor
+   ```
 
 ---
 
-## **Contributing** 🤝  
-
-We welcome contributions from the community. To contribute, follow these steps:  
-1. Fork the repository.  
-2. Create a feature branch:  
-   ```bash  
-   git checkout -b feature/YourFeatureName  
-   ```  
-3. Commit your changes and push.  
-4. Open a pull request, detailing what changes you’ve made.  
-
-For major changes, please discuss first by opening an issue.  
+## Feedback and Contributions
+Collaborative features such as comments and real-time editing are actively in progress. We welcome your feedback and ideas! If you'd like to contribute, please check the [Contributing Guide](CONTRIBUTING.md) or open an issue.
 
 ---
 
-## **License** 📜  
-
-This project is licensed under the [MIT License](LICENSE).  
-
----
-
-Start creating stunning diagrams instantly with Mermaid Editor—elevate your ideas and collaborate better today!
+> Developed by **Alicia Goh** *(EF361)* - Senior AI & Software Engineer.
