@@ -34,10 +34,10 @@ The Mermaid Editor follows a modular workflow to ensure security and high reliab
 
 ```mermaid
 graph TD
-    User[User] -->|Inputs Diagram Code| Frontend[Streamlit Interface]
-    Frontend -->|Sanitizes + Validates Code| Validator[Mermaid.js Sanitizer]
-    Validator -->|Sends Secure Code| Renderer[Mermaid.js Renderer]
-    Renderer -->|Sandboxed Iframe Rendering + CSP| Exporter[Export Module]
+    User["User"] -->|Inputs Diagram Code| Frontend["Streamlit Interface"]
+    Frontend -->|Sanitizes + Validates Code| Validator["Mermaid.js Sanitizer"]
+    Validator -->|Sends Secure Code| Renderer["Mermaid.js Renderer"]
+    Renderer -->|Sandboxed Iframe Rendering + CSP| Exporter["Export Module"]
     Exporter -->|Exports PNG/SVG| User
 ```
 
