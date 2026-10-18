@@ -1,144 +1,131 @@
-# Mermaid Editor
+# Mermaid Editor - Interactive Diagram Editor for Developers and Teams
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&style=flat-square)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red?logo=streamlit&style=flat-square)
-![Mermaid.js](https://img.shields.io/badge/Mermaid.js-10.x-green?logo=mermaid&style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-lightgray?style=flat-square)
-![Demo](https://img.shields.io/badge/Demo-Live-green?logo=streamlit&style=flat-square)
-
-## Executive Summary 🌟
-
-**Mermaid Editor** is a lightweight, Streamlit-powered visualization tool that enables users to create, preview, and export beautiful diagrams using **Mermaid.js**. It simplifies the process of turning plain-text diagram definitions into professional visuals, with a focus on usability, extensibility, and performance.
+![GitHub license](https://img.shields.io/github/license/EF361/mermaid_editor)
+![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Streamlit Version](https://img.shields.io/badge/Streamlit-1.x-brightgreen)
+![Mermaid.js](https://img.shields.io/badge/Mermaid.js-10.x-orange)
+![Docker Support](https://img.shields.io/badge/Docker-Ready-2496ED)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit-brightgreen)](https://your-live-demo-link.com)
 
 ---
 
-## Key Features 🔑
+## Executive Summary
 
-- **Live Rendering**: Real-time preview of Mermaid diagrams as you type.
-- **Export to PNG/SVG**: Generate and download high-quality diagrams with accurate dimensions, fonts, and backgrounds.
-- **Input Sandbox**: Securely processes Mermaid code with input sanitization to mitigate script-injection risks.
-- **Theme Support**: Toggle between Mermaid themes (`default`, `dark`, `forest`, etc.).
-- **Validation Feedback**: Highlights invalid Mermaid syntax errors for faster debugging.
-- **Lightweight Docker Support**: Optional containerized deployment for seamless setup.
-- **Responsive Design**: Optimized for both desktop and mobile environments.
-- **Extendable Implementation**: Ready for future collaboration and real-time editing features.
+Mermaid Editor is an interactive, secure, and fully sandboxed editor for creating, validating, and exporting diagrams using Mermaid.js. Tailored for developers, teams, and technical writers, it empowers users to rapidly prototype visualization ideas while ensuring secure rendering and reproducible outputs across environments.
 
 ---
 
-## Architecture & Workflow 🏗️
+## Key Features
 
-The **Mermaid Editor** workflow integrates Python and Javascript execution seamlessly, bridging Streamlit for UI handling and Mermaid.js for diagram rendering in the browser. Below is the high-level architecture:
+- **Live Diagram Rendering**: Instant feedback as you design your flowcharts, sequence diagrams, and more.
+- **Advanced Security**: Enforces Mermaid's strict mode with a maintained sanitizer and sandboxed iframes protected by Content Security Policies (CSP).
+- **Theme and Export Support**: Apply custom themes and export diagrams to scalable formats (SVG/PNG) ensuring consistency across fonts, viewports, and browsers.
+- **Regression Testing**: Includes comprehensive tests for security vulnerabilities such as script injections, malformed syntax, and rendering edge cases.
+- **Offline Asset Pinning**: Mermaid.js assets are pinned locally with subresource integrity (SRI) checks to ensure secure and reliable operation.
+- **Zero Persistent Storage**: All operations avoid persistent filesystem usage, supporting stateless workflows.
+- **Docker-Ready**: Fully containerized setup for environment-agnostic deployment.
+- **Cross-Browser Consistency**: Deterministic rendering validated across popular browsers to maintain quality.
+
+---
+
+## Architecture & Workflow
+
+The Mermaid Editor follows a modular workflow to ensure security and high reliability. Below is an architecture diagram to explain the interactions between components:
 
 ```mermaid
 graph TD
-    User[User Input] -->|Text-based Diagram Code| Streamlit[Streamlit Backend]
-    Streamlit -->|Validate and Sanitize Input| MermaidJS[Mermaid.js Render Engine]
-    MermaidJS -->|Live Diagram Rendering| Browser[Frontend]
-    Browser -->|Export Request (PNG/SVG)| Streamlit[Streamlit Backend]
-    Streamlit --> Storage[File System]
+    User[User] -->|Inputs Diagram Code| Frontend[Streamlit Interface]
+    Frontend -->|Sanitizes + Validates Code| Validator[Mermaid.js Sanitizer]
+    Validator -->|Sends Secure Code| Renderer[Mermaid.js Renderer]
+    Renderer -->|Sandboxed Iframe Rendering + CSP| Exporter[Export Module]
+    Exporter -->|Exports PNG/SVG| User
 ```
 
----
-
-## Tech Stack & Tools 🛠️
-
-- **Frontend**: Streamlit for UI rendering and layout.
-- **Diagram Engine**: Mermaid.js (v10.x) for diagram generation.
-- **Backend**: Python 3.9+, with strict sandboxing of user inputs.
-- **Security**: Content Security Policy (CSP) to prevent script injection.
-- **Optional Deployment**: Docker for isolated application runtime.
+Workflow Summary:
+1. The user provides Mermaid.js diagram code via the Streamlit-based UI.
+2. Code is sanitized and validated using a maintained sanitizer aligned with Mermaid’s security guidelines.
+3. Valid diagrams are rendered in a sandboxed iframe with strict CSPs (blocks scripts, unnecessary navigation, or network permissions).
+4. The user can preview, theme, and export diagrams without affecting persistent storage.
 
 ---
 
-## Quickstart / Installation 🚀
+## Tech Stack & Tools Breakdown
 
-Follow these instructions to set up and deploy the Mermaid Editor locally or in a containerized environment:
+- **Frontend**: Streamlit for a lightweight, interactive interface.
+- **Diagram Rendering**: Mermaid.js 10 for robust diagram generation with strict security mode enabled.
+- **Packaged Deployment**: Docker for portable containerized environments.
+- **Languages**: Python 3.9+ for backend processing.
+
+---
+
+## Quickstart / Installation
+
+To get started with Mermaid Editor, follow these steps:
 
 ### Prerequisites
-- Python 3.9 or higher
-- Node.js for serving Mermaid.js assets (optional)
-- Docker (if deploying via container)
+- Python 3.9+
+- Docker (if using containerized setup)
 
-### Local Installation
+### Installation
 
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/EF361/mermaid_editor.git
+   cd mermaid_editor
+   ```
+
+2. **Using Python (Local Development)**:
+   - Create a virtual environment:
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+     ```
+   - Install dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Run the app:
+     ```bash
+     streamlit run app.py
+     ```
+
+3. **Using Docker (For Production)**:
+   - Build the Docker image:
+     ```bash
+     docker build -t mermaid_editor:latest .
+     ```
+   - Run the container:
+     ```bash
+     docker run -p 8501:8501 mermaid_editor:latest
+     ```
+   - Access the app at `http://localhost:8501`.
+
+### Testing
+Run the provided security and regression tests to ensure the app is functioning safely and reliably:
 ```bash
-# Clone the repository
-git clone https://github.com/EF361/mermaid_editor.git
-cd mermaid_editor
-
-# Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate    # On Windows, use .venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the Streamlit app
-streamlit run app.py
+pytest tests/
 ```
 
-### Docker Deployment
+---
 
-```bash
-# Build the Docker image
-docker build -t mermaid_editor .
+## Contributing
 
-# Run the container
-docker run -d -p 8501:8501 mermaid_editor
-```
-
-Visit `http://localhost:8501` in your browser to start using the **Mermaid Editor**.
+We welcome contributions to enhance Mermaid Editor! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
-## Verified Screenshots & Examples 📸
+## License
 
-Here are some examples of the diagrams you can create with Mermaid Editor:
-
-**Flowchart Example**
-```mermaid
-graph LR
-    A[Start] --> B[Processing]
-    B --> C{Decision?}
-    C -->|Yes| D[End]
-    C -->|No| B
-```
-
-![Flowchart Example](docs/screenshots/flowchart_example.png)
-
-**Gantt Chart Example**
-```mermaid
-gantt
-    title Project Timeline
-    dateFormat  YYYY-MM-DD
-    section Development
-    Task 1       :done,    des1, 2023-01-01, 2023-01-10
-    Task 2       :active,  des2, 2023-01-11, 2023-03-15
-```
-
-![Gantt Example](docs/screenshots/gantt_example.png)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Roadmap 🚧
+## Live Demo
 
-This repository is a foundational implementation and will expand with future updates:
-- 🌐 **Collaboration**: Real-time editing and multi-user support.
-- 🔗 **Integrations**: Embed diagrams in Markdown or Confluence natively.
-- 🛠 **Custom Extensions**: Add hooks for new diagram types or themes.
+Explore a live demonstration of Mermaid Editor by visiting our [Live Demo](https://your-live-demo-link.com).
 
 ---
 
-## Contribution Guidelines 🤝
+**Crafted by Alicia Goh (EF361)** 
 
-Contributions are welcome! Please refer to the [`CONTRIBUTING.md`](CONTRIBUTING.md) file for details on the development workflow and coding standards.
-
----
-
-## License 📜
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-**Crafted with ❤️ by [Alicia Goh (EF361)](https://github.com/EF361)**
+Alicia is an accomplished AI & Software Engineer passionate about building secure, user-friendly tools for developers worldwide.
